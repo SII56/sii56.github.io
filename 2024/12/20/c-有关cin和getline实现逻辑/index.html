@@ -19,24 +19,22 @@
   <meta name="author" content="KitaKyapu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="为应付下周的期末考试突击学习前端！！以css和javascript为主！选择器 123456789101112131415161718192021222324252627a &#x2F;*所有a元素*&#x2F;.a &#x2F;*类访问，指向所有在类a中的元素*&#x2F;#a &#x2F;*id访问，指向唯一id名为a的元素*&#x2F;a b &#x2F;*后代元素，选择a的所有子元素*&#x2F;a &gt; b &#x2F;*子元素，选择a所有直接子元素*&#x2F;a + b &#x2F;*紧">
+    <meta name="description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。 1234567#include &lt;iostream&gt;using namespace std;int main(){    int a;    cin&gt;&gt;a;    cout&lt;&lt;a&lt;&lt;endl;} 121 21 而getline则不同，会从输入缓存中读取到第一个换行符">
 <meta property="og:type" content="article">
-<meta property="og:title" content="半个从零开始的前端学习">
-<meta property="og:url" content="http://example.com/2024/12/18/%E5%8D%8A%E4%B8%AA%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="c++有关cin和getline实现逻辑">
+<meta property="og:url" content="http://example.com/2024/12/20/c-%E6%9C%89%E5%85%B3cin%E5%92%8Cgetline%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91/index.html">
 <meta property="og:site_name" content="Kirara">
-<meta property="og:description" content="为应付下周的期末考试突击学习前端！！以css和javascript为主！选择器 123456789101112131415161718192021222324252627a &#x2F;*所有a元素*&#x2F;.a &#x2F;*类访问，指向所有在类a中的元素*&#x2F;#a &#x2F;*id访问，指向唯一id名为a的元素*&#x2F;a b &#x2F;*后代元素，选择a的所有子元素*&#x2F;a &gt; b &#x2F;*子元素，选择a所有直接子元素*&#x2F;a + b &#x2F;*紧">
+<meta property="og:description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。 1234567#include &lt;iostream&gt;using namespace std;int main(){    int a;    cin&gt;&gt;a;    cout&lt;&lt;a&lt;&lt;endl;} 121 21 而getline则不同，会从输入缓存中读取到第一个换行符">
 <meta property="og:locale">
-<meta property="article:published_time" content="2024-12-18T15:39:04.000Z">
-<meta property="article:modified_time" content="2024-12-18T16:16:07.274Z">
+<meta property="article:published_time" content="2024-12-20T09:32:28.000Z">
+<meta property="article:modified_time" content="2024-12-20T10:01:40.568Z">
 <meta property="article:author" content="KitaKyapu">
-<meta property="article:tag" content="HTML5">
-<meta property="article:tag" content="CSS">
-<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>半个从零开始的前端学习 - Kirara</title>
+  <title>c++有关cin和getline实现逻辑 - Kirara</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -87,7 +85,119 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
 
 
 <body>
@@ -202,7 +312,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="半个从零开始的前端学习"></span>
+            <span id="subtitle" data-typed-text="c++有关cin和getline实现逻辑"></span>
           
         </div>
 
@@ -213,8 +323,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-12-18 23:39" pubdate>
-          December 18, 2024 pm
+        <time datetime="2024-12-20 17:32" pubdate>
+          December 20, 2024 pm
         </time>
       </span>
     
@@ -225,7 +335,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          494 wörter
+          182 wörter
         
       </span>
     
@@ -236,7 +346,7 @@
         
         
         
-          5 minuten
+          2 minuten
         
       </span>
     
@@ -273,16 +383,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">半个从零开始的前端学习</h1>
+            <h1 id="seo-header">c++有关cin和getline实现逻辑</h1>
             
             
               <div class="markdown-body">
                 
-                <p>为应付下周的期末考试突击学习前端！！<br>以css和javascript为主！<br>选择器</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span> <span class="hljs-comment">/*所有a元素*/</span><br><span class="hljs-selector-class">.a</span> <span class="hljs-comment">/*类访问，指向所有在类a中的元素*/</span><br><span class="hljs-selector-id">#a</span> <span class="hljs-comment">/*id访问，指向唯一id名为a的元素*/</span><br><span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">b</span> <span class="hljs-comment">/*后代元素，选择a的所有子元素*/</span><br><span class="hljs-selector-tag">a</span> &gt; <span class="hljs-selector-tag">b</span> <span class="hljs-comment">/*子元素，选择a所有直接子元素*/</span><br><span class="hljs-selector-tag">a</span> + <span class="hljs-selector-tag">b</span> <span class="hljs-comment">/*紧邻兄弟，选择a之后第一个同级元素*/</span><br><span class="hljs-selector-tag">a</span> ~ <span class="hljs-selector-tag">b</span> <span class="hljs-comment">/*通用兄弟，选择a之后所有同级元素*/</span><br><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[attribute]</span> <span class="hljs-comment">/*选择a具有指定属性的元素。*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[attribute=<span class="hljs-string">&quot;value&quot;</span>]</span> <span class="hljs-comment">/* 选择a中具有特定属性值的元素。 */</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[attribute*=<span class="hljs-string">&quot;value&quot;</span>]</span> <span class="hljs-comment">/* 选择a中属性值包含指定字符串的元素。*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[attribute^=<span class="hljs-string">&quot;value&quot;</span>]</span> <span class="hljs-comment">/* 选择a中属性值以指定字符串开头的元素。*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-attr">[attribute$=<span class="hljs-string">&quot;value&quot;</span>]</span> <span class="hljs-comment">/* 选择a中属性值以指定字符串结尾的元素。*/</span><br><span class="hljs-comment">/*伪类选择器，均对a的所有元素以下*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span> <span class="hljs-comment">/*指向其元素鼠标悬停时样式*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span> <span class="hljs-comment">/*用于选择元素获得焦点时的状态（例如：表单元素被点击或选中时）*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:active</span> <span class="hljs-comment">/*鼠标点击时的瞬间状态*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:first-child</span> <span class="hljs-comment">/*a作父元素时的第一个子元素*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:last-child</span> <span class="hljs-comment">/*类似如上*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:nth-child</span>(odd) <span class="hljs-comment">/*奇数子元素*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:nth-child</span>(even) <span class="hljs-comment">/*偶数子元素*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:not</span>() <span class="hljs-comment">/*不是什么的元素，括号内可以填button，意为不是按钮的元素*/</span><br><span class="hljs-comment">/*伪元素选择器*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">::before</span> <span class="hljs-comment">/*a元素的前方，::前可以是类和id*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">::after</span> <span class="hljs-comment">/*a元素的后方*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">::first-letter</span> <span class="hljs-comment">/*首个字，字母*/</span><br><span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">::first-line</span> <span class="hljs-comment">/*第一行*/</span><br></code></pre></td></tr></table></figure>
-<p>css样式</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span>&#123;<br>    <span class="hljs-attribute">color</span>:blue;<br>&#125;<span class="hljs-comment">/*颜色*/</span><br><span class="hljs-selector-tag">p</span> &#123;<br>    <span class="hljs-attribute">font-family</span>: Arial, sans-serif;<br>&#125;<span class="hljs-comment">/*字体*/</span><br><span class="hljs-selector-tag">p</span> &#123;<br>    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">16px</span>;<br>&#125;<span class="hljs-comment">/*字体大小*/</span><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">background-color</span>: yellow;<br>&#125;<span class="hljs-comment">/*背景元素*/</span><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span> <span class="hljs-number">10px</span> <span class="hljs-number">10px</span> <span class="hljs-number">10px</span>;<br>&#125;<span class="hljs-comment">/*外部边距 默认一个是四周 有两个是上下 四个是上右下左*/</span><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10px</span>;<br>&#125;<span class="hljs-comment">/*内部边距*/</span><br><span class="hljs-selector-tag">div</span> &#123;<br>    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid black;<br>&#125;<span class="hljs-comment">/*边框   大小 形式 颜色*/</span><br></code></pre></td></tr></table></figure>
-
+                <p>cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>    <span class="hljs-type">int</span> a;<br>    cin&gt;&gt;a;<br>    cout&lt;&lt;a&lt;&lt;endl;<br>}<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs input/import">1 2<br>1<br></code></pre></td></tr></table></figure>
+<p>而getline则不同，会从输入缓存中读取到第一个换行符结束，所以当你先用过一次cin后，务必用上cin.ignore()来忽略换行符，否则会运行结束！！</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>    <span class="hljs-type">int</span> a;<br>    string s;<br>    cin&gt;&gt;a;<br>    cout&lt;&lt;a&lt;&lt;endl;<br>    <span class="hljs-built_in">getline</span>(cin,s);<br>    cout&lt;&lt;s&lt;&lt;endl;<br>}<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs input/import">1<br>2<br>//无法输入，程序结束<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{<br>    <span class="hljs-type">int</span> a;<br>    string s;<br>    cin&gt;&gt;a;<br>    cout&lt;&lt;a&lt;&lt;endl;<br>    cin.<span class="hljs-built_in">ignore</span>();<br>    <span class="hljs-built_in">getline</span>(cin,s);<br>    cout&lt;&lt;s&lt;&lt;endl;<br>}<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs input/import">1<br>1<br>Hello<br>Hello<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -294,11 +407,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/HTML5/" class="print-no-link">#HTML5</a>
-      
-        <a href="/tags/CSS/" class="print-no-link">#CSS</a>
-      
-        <a href="/tags/JavaScript/" class="print-no-link">#JavaScript</a>
+        <a href="/tags/C-C/" class="print-no-link">#C/C++</a>
       
     </div>
   
@@ -310,8 +419,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>半个从零开始的前端学习</div>
-      <div>http://example.com/2024/12/18/半个从零开始的前端学习/</div>
+      <div>c++有关cin和getline实现逻辑</div>
+      <div>http://example.com/2024/12/20/c-有关cin和getline实现逻辑/</div>
     </div>
     <div class="license-meta">
       
@@ -323,7 +432,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>December 18, 2024</div>
+          <div>December 20, 2024</div>
         </div>
       
       
@@ -355,18 +464,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/19/%E5%BE%AE%E7%A7%AF%E5%88%86%E5%9B%9E%E9%A1%BE/" title="微积分回顾">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">微积分回顾</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/12/15/%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E3%80%81%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E3%80%81%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95/" title="最大公约数、最小公倍数、辗转相除法">
-                        <span class="hidden-mobile">最大公约数、最小公倍数、辗转相除法</span>
+                      <a href="/2024/12/19/%E5%88%9D%E7%AD%89%E6%95%B0%E8%AE%BA/" title="初等数论">
+                        <span class="hidden-mobile">初等数论</span>
                         <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
