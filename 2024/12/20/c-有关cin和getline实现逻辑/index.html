@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -19,15 +19,15 @@
   <meta name="author" content="KitaKyapu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。 1234567#include &lt;iostream&gt;using namespace std;int main(){    int a;    cin&gt;&gt;a;    cout&lt;&lt;a&lt;&lt;endl;} 121 21 而getline则不同，会从输入缓存中读取到第一个换行符">
+    <meta name="description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c++有关cin和getline实现逻辑">
 <meta property="og:url" content="http://example.com/2024/12/20/c-%E6%9C%89%E5%85%B3cin%E5%92%8Cgetline%E5%AE%9E%E7%8E%B0%E9%80%BB%E8%BE%91/index.html">
 <meta property="og:site_name" content="Kirara">
-<meta property="og:description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。 1234567#include &lt;iostream&gt;using namespace std;int main(){    int a;    cin&gt;&gt;a;    cout&lt;&lt;a&lt;&lt;endl;} 121 21 而getline则不同，会从输入缓存中读取到第一个换行符">
-<meta property="og:locale">
+<meta property="og:description" content="cin首先会从输入缓存中读取到一个符合类型的数开始，直到找到一个空格符或换行符结束。">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-20T09:32:28.000Z">
-<meta property="article:modified_time" content="2024-12-20T12:58:06.764Z">
+<meta property="article:modified_time" content="2024-12-20T15:50:32.699Z">
 <meta property="article:author" content="KitaKyapu">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta name="twitter:card" content="summary_large_image">
@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":false,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -214,7 +214,7 @@ mjx-container[display="true"] + br {
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>KitaKiraのブログ</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -247,18 +247,6 @@ mjx-container[display="true"] + br {
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
               </a>
             </li>
           

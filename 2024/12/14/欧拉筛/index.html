@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh" data-default-color-scheme=auto>
+<html lang="en" data-default-color-scheme=auto>
 
 
 
@@ -19,15 +19,15 @@
   <meta name="author" content="KitaKyapu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="对于判断一个是否为质数&#x2F;素数，有好几种方法，例如把数字从循环到，检测相除后是否余数为零，进而判断情况。 朴素筛法1234567bool IsPrime(int n){    if(n&lt;&#x3D;1) return false;    for(int i&#x3D;2;i&lt;n;i++){        if(n%i&#x3D;&#x3D;0) return false;    }    return true;} 像上面的情">
+    <meta name="description" content="对于判断一个是否为质数&#x2F;素数，有好几种方法，例如把数字$n$从$2$循环到$n-1$，检测相除后是否余数为零，进而判断情况。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="欧拉筛">
 <meta property="og:url" content="http://example.com/2024/12/14/%E6%AC%A7%E6%8B%89%E7%AD%9B/index.html">
 <meta property="og:site_name" content="Kirara">
-<meta property="og:description" content="对于判断一个是否为质数&#x2F;素数，有好几种方法，例如把数字从循环到，检测相除后是否余数为零，进而判断情况。 朴素筛法1234567bool IsPrime(int n){    if(n&lt;&#x3D;1) return false;    for(int i&#x3D;2;i&lt;n;i++){        if(n%i&#x3D;&#x3D;0) return false;    }    return true;} 像上面的情">
-<meta property="og:locale">
+<meta property="og:description" content="对于判断一个是否为质数&#x2F;素数，有好几种方法，例如把数字$n$从$2$循环到$n-1$，检测相除后是否余数为零，进而判断情况。">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-12-14T03:44:29.000Z">
-<meta property="article:modified_time" content="2024-12-20T09:32:55.232Z">
+<meta property="article:modified_time" content="2024-12-20T15:50:43.044Z">
 <meta property="article:author" content="KitaKyapu">
 <meta property="article:tag" content="C&#x2F;C++">
 <meta property="article:tag" content="初等数论">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":false,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -217,7 +217,7 @@ mjx-container[display="true"] + br {
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>KitaKiraのブログ</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -250,18 +250,6 @@ mjx-container[display="true"] + br {
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>Archives</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
               </a>
             </li>
           
